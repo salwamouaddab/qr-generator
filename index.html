@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sayb QR code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Sayb QR code</h1>
+  <p class="sub">Kteb lien, texte ola WiFi. Dghya kayban QR, o t9der t-telechargih PNG ola SVG.</p>
+
+  <div class="grid">
+    <section class="panel" aria-label="Contenu">
+      <div class="tabs" role="tablist">
+        <button role="tab" id="t-url" aria-selected="true" data-mode="url">Lien</button>
+        <button role="tab" id="t-text" aria-selected="false" data-mode="text">Texte</button>
+        <button role="tab" id="t-wifi" aria-selected="false" data-mode="wifi">WiFi</button>
+      </div>
+
+      <div data-panel="url">
+        <label for="url">Lien dyalek (portfolio, Instagram, LinkedIn...)</label>
+        <input type="url" id="url" placeholder="monportfolio.ma" autocomplete="off" inputmode="url">
+      </div>
+
+      <div data-panel="text" hidden>
+        <label for="txt">Texte</label>
+        <textarea id="txt" placeholder="Kteb ay texte hna"></textarea>
+      </div>
+
+      <div data-panel="wifi" hidden>
+        <label for="ssid">Smiya dyal reseau (SSID)</label>
+        <input type="text" id="ssid" autocomplete="off">
+        <label for="pw">Mot de passe</label>
+        <input type="password" id="pw" autocomplete="off">
+        <label for="sec">Type dyal securite</label>
+        <select id="sec">
+          <option value="WPA">WPA / WPA2</option>
+          <option value="WEP">WEP</option>
+          <option value="nopass">Bla mot de passe</option>
+        </select>
+        <label class="check"><input type="checkbox" id="hid"> Reseau mkhbbi</label>
+      </div>
+
+      <div class="colors">
+        <label>Loun dyal QR <input type="color" id="fg" value="#101A3A"></label>
+        <label>Loun dyal l-khlfiya <input type="color" id="bg" value="#FFFFFF"></label>
+      </div>
+      <p class="warn" id="warn" aria-live="polite"></p>
+    </section>
+
+    <section class="stage" aria-label="QR code">
+      <div class="qrbox" id="qrbox"><div class="empty">Kteb chi 7aja f lisser, o QR ghadi iban hna.</div></div>
+      <div class="actions">
+        <button class="main" id="dlpng" disabled>Telecharger PNG</button>
+        <button id="dlsvg" disabled>Telecharger SVG</button>
+      </div>
+      <p class="status" id="status" role="status"></p>
+    </section>
+  </div>
+</main>
+
+<script src="lib/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
